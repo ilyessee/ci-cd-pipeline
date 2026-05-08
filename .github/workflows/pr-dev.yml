@@ -35,16 +35,16 @@ jobs:
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          working-directory: backend
         with:
           args: --severity-threshold=high
-        working-directory: backend
       - name: Snyk frontend
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          working-directory: frontend
         with:
           args: --severity-threshold=high
-        working-directory: frontend
 
   test:
     runs-on: ubuntu-latest
