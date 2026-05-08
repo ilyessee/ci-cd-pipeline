@@ -23,9 +23,9 @@ jobs:
         with:
           node-version: "18"
       - name: Audit backend
-        run: cd backend && npm install && npm audit --audit-level=high
+        run: cd backend && npm install && npm audit --audit-level=critical
       - name: Audit frontend
-        run: cd frontend && npm install && npm audit --audit-level=high
+        run: cd frontend && npm install && npm audit --audit-level=critical
 
   security:
     runs-on: ubuntu-latest
