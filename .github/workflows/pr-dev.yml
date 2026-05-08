@@ -31,19 +31,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - name: Install backend dependencies
+        run: cd backend && npm install
       - name: Snyk backend
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high --file=backend/package.json
+      - name: Install frontend dependencies
+        run: cd frontend && npm install
       - name: Snyk frontend
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high --file=frontend/package.json
-
   test:
     runs-on: ubuntu-latest
     steps:
