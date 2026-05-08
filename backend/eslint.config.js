@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   {
     rules: {
       "no-unused-vars": "warn",
@@ -6,4 +6,3 @@ export default [
     }
   }
 ];
-
